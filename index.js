@@ -24,7 +24,7 @@ app.post("/run-lru", (req, res) => {
   console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./public/lru",
+    "./lru",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -57,7 +57,7 @@ app.post("/run-fifo", (req, res) => {
   console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./public/fifo",
+    "./fifo",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -90,7 +90,7 @@ app.post("/run-lfu", (req, res) => {
   console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./public/lfu",
+    "./lfu",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -121,7 +121,7 @@ app.post("/run-mru", (req, res) => {
   console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./public/mru",
+    "./mru",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -152,7 +152,7 @@ app.post("/run-optimal", (req, res) => {
   console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./public/optimal",
+    "./optimal",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
