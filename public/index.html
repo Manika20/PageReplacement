@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Replacement Algorithms</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>Page Replacement Algorithms</h1>
+    <div class="algorithm-list">
+      <!-- FIFO -->
+      <div class="algo">
+        <h2>First-In First-Out (FIFO)</h2>
+        <p>
+          The FIFO page replacement algorithm is one of the simplest, where the
+          oldest pages in memory are replaced first. As the name suggests, the
+          first page loaded into memory will be the first to be replaced when
+          the memory is full. This approach does not take into account how often
+          a page is used, potentially replacing frequently accessed pages. It is
+          easy to implement but can lead to inefficient use of memory.
+        </p>
+        <a href="fifo.html">Run FIFO Algorithm</a>
+      </div>
+
+      <!-- LRU -->
+      <div class="algo">
+        <h2>Least Recently Used (LRU)</h2>
+        <p>
+          The LRU (Least Recently Used) algorithm keeps track of the order of
+          page usage and replaces the page that hasn’t been used for the longest
+          time. This is a more intuitive approach than FIFO because it is based
+          on the assumption that pages which haven't been used recently are less
+          likely to be used in the near future. The LRU algorithm is widely used
+          and often leads to better performance than FIFO.
+        </p>
+        <a href="lru.html">Run LRU Algorithm</a>
+      </div>
+
+      <!-- LFU -->
+      <div class="algo">
+        <h2>Least Frequently Used (LFU)</h2>
+        <p>
+          The LFU (Least Frequently Used) algorithm replaces the page that has
+          the lowest access frequency. It is based on the idea that pages that
+          are accessed more frequently are more likely to be used again soon.
+          This method keeps track of the frequency of access for each page and
+          prioritizes pages with fewer accesses for replacement. LFU can be
+          efficient but may suffer from the problem of "aging," where older
+          pages might be kept in memory due to higher historical usage.
+        </p>
+        <a href="lfu.html">Run LFU Algorithm</a>
+      </div>
+
+      <!-- MRU -->
+      <div class="algo">
+        <h2>Most Recently Used (MRU)</h2>
+        <p>
+          The MRU (Most Recently Used) algorithm replaces the most recently
+          accessed page. This approach works well in scenarios where the most
+          recently accessed pages are less likely to be needed in the near
+          future. MRU is not as commonly used as LRU, but it can be effective
+          for certain workloads, such as in database systems where recent data
+          is often discarded after use.
+        </p>
+        <a href="mru.html">Run MRU Algorithm</a>
+      </div>
+
+      <!-- Optimal -->
+      <div class="algo">
+        <h2>Optimal Page Replacement</h2>
+        <p>
+          The Optimal Page Replacement algorithm replaces the page that will not
+          be used for the longest period of time in the future. By knowing the
+          future requests, this algorithm can make perfect decisions, though it
+          is impractical in real-world scenarios since future page references
+          are unknown. However, it is useful as a benchmark for evaluating other
+          algorithms.
+        </p>
+        <a href="optimal.html">Run Optimal Algorithm</a>
+      </div>
+    </div>
+  </body>
+</html>
