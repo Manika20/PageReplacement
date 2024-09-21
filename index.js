@@ -74,7 +74,7 @@ app.post("/run-fifo", (req, res) => {
 });
 //LFU algo
 
-app.post("/run-lfu", (req, res) => {
+app.post("/api/run-lfu", (req, res) => {
   const { capacity, pages } = req.body;
 
   console.log("capacity:", capacity, "pages:", pages);
