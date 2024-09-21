@@ -7,23 +7,36 @@ document
       .getElementById("pages")
       .value.split(",")
       .map((page) => parseInt(page.trim()));
+    async function fetchData(capacity, pages) {
+      try {
+        const response = await fetch("/run-lfu", {
+          // Use relative URL
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ capacity, pages }),
+        });
 
-    fetch(
-      "https://page-replacement-git-master-manikas-projects-aa2128e7.vercel.app/run-lfu",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ capacity: capacity, pages: pages }),
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
+        // Check if the response is OK
+        if (!response.ok) {
+          throw new Error(
+            `Network response was not ok: ${response.statusText}`
+          );
+        }
+
+        const data = await response.json();
+
+        // Process the received data
         displayCacheTable(data.cache);
         displayHitsAndMisses(data.hits, data.misses); // Add this line
-      })
-      .catch((error) => console.error("Error:", error));
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+
+    // Call the fetchData function with appropriate parameters
+    fetchData(capacity, pages);
 
     // New function to display hits and misses
     function displayHitsAndMisses(hits, misses) {
