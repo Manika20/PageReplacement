@@ -8,7 +8,7 @@ document
       .value.split(",")
       .map((page) => parseInt(page.trim()));
 
-    fetch("http://localhost:3000/run-lru", {
+    fetch("/run-lru", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
