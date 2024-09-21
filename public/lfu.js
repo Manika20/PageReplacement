@@ -1,4 +1,3 @@
-const baseUrl = window.location.origin;
 document
   .getElementById("lfu-form")
   .addEventListener("submit", function (event) {
@@ -9,13 +8,16 @@ document
       .value.split(",")
       .map((page) => parseInt(page.trim()));
 
-    fetch(`${baseUrl}/run-lfu`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ capacity: capacity, pages: pages }),
-    })
+    fetch(
+      "https://page-replacement-git-master-manikas-projects-aa2128e7.vercel.app/run-lfu",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ capacity: capacity, pages: pages }),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         displayCacheTable(data.cache);
