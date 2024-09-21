@@ -9,14 +9,17 @@ document
       .map((page) => parseInt(page.trim()));
     async function fetchData(capacity, pages) {
       try {
-        const response = await fetch("/run-lfu", {
-          // Use relative URL
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ capacity, pages }),
-        });
+        const response = await fetch(
+          "https://page-replacement-2rd9jp3gd-manikas-projects-aa2128e7.vercel.app/run-lfu",
+          {
+            // Use relative URL
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ capacity, pages }),
+          }
+        );
 
         // Check if the response is OK
         if (!response.ok) {
