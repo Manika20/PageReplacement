@@ -1,18 +1,8 @@
 import express from "express"; // Change to import
 import { execFile } from "child_process";
 import cors from "cors";
-import { initializeApp } from "firebase/app";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBarSG0Cj0WE7wvnN12NJPmw1hDW18udks",
-  authDomain: "pagereplacement-db582.firebaseapp.com",
-  projectId: "pagereplacement-db582",
-  storageBucket: "pagereplacement-db582.appspot.com",
-  messagingSenderId: "305391360502",
-  appId: "1:305391360502:web:a1314ad382f3b2874e4fd7",
-};
 const app = express();
-const firebaseApp = initializeApp(firebaseConfig);
 
 app.use(cors());
 app.use(express.json());
