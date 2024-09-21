@@ -45,10 +45,7 @@ function displayCacheTable(data) {
 
   // Create table header
   let headerRow = document.createElement("tr");
-  let headers = [
-    "Steps",
-    ...Array.from({ length: data[0].length }, (_, i) => "Frames"),
-  ];
+  let headers = ["Steps"];
   headers.forEach((header) => {
     let th = document.createElement("th");
     th.innerText = header;

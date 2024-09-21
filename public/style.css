@@ -15,12 +15,19 @@ body {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: auto; /* or set a fixed height */
 }
 
 #left {
   width: 50%;
   padding: 20px;
   box-sizing: border-box;
+  min-height: 400px; /* Adjust based on your needs */
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 #right {

@@ -1,3 +1,4 @@
+const baseUrl = window.location.origin;
 document
   .getElementById("lfu-form")
   .addEventListener("submit", function (event) {
@@ -8,7 +9,7 @@ document
       .value.split(",")
       .map((page) => parseInt(page.trim()));
 
-    fetch("/run-lfu", {
+    fetch(`${baseUrl}/run-lfu`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,10 +46,7 @@ function displayCacheTable(data) {
 
   // Create table header
   let headerRow = document.createElement("tr");
-  let headers = [
-    "Steps",
-    ...Array.from({ length: data[0].length }, (_, i) => "Frames"),
-  ];
+  let headers = ["Steps"];
   headers.forEach((header) => {
     let th = document.createElement("th");
     th.innerText = header;
