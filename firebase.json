@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "site": "pagereplacement",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "firebase-debug.log",
+      "firebase-debug.*",
+      ".git/",
+      "*.exe"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
