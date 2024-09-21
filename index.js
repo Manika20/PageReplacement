@@ -1,19 +1,20 @@
 import cors from "cors";
-import express from "express"; // Change to import
+import express from "express";
 import { execFile } from "child_process";
 
 const app = express();
+
+// Correct CORS setup
 app.use(
   cors({
     origin:
-      "https://page-replacement-git-master-manikas-projects-aa2128e7.vercel.app", // Allow your frontend domain
+      "https://page-replacement-git-master-manikas-projects-aa2128e7.vercel.app", // Allow only your frontend domain
   })
 );
-app.use(cors());
-app.options("*", cors()); // Allow preflight requests for all routes
 
 app.use(express.json());
 app.use(express.static("public"));
+
 // Handle LRU Algorithm
 app.post("/run-lru", (req, res) => {
   const { capacity, pages } = req.body;
