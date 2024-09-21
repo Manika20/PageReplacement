@@ -3,15 +3,7 @@ import express from "express";
 import { execFile } from "child_process";
 
 const app = express();
-
-// Correct CORS setup
-app.use(
-  cors({
-    origin:
-      "https://page-replacement-git-master-manikas-projects-aa2128e7.vercel.app", // Allow only your frontend domain
-  })
-);
-
+app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -22,7 +14,7 @@ app.post("/run-lru", (req, res) => {
   console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./lru",
+    "./api/lru",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -55,7 +47,7 @@ app.post("/run-fifo", (req, res) => {
   console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./fifo",
+    "./api/fifo",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -88,7 +80,7 @@ app.post("/run-lfu", (req, res) => {
   console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./lfu",
+    "./api/lfu",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -119,7 +111,7 @@ app.post("/run-mru", (req, res) => {
   console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./mru",
+    "./api/mru",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -150,7 +142,7 @@ app.post("/run-optimal", (req, res) => {
   console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./optimal",
+    "./api/optimal",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
