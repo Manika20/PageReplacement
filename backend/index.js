@@ -3,8 +3,11 @@ import express from "express";
 import path from "path";
 import { execFile } from "child_process";
 import { fileURLToPath } from "url";
-const env = require("./config/environment");
+import dotenv from "dotenv";
+dotenv.config();
+
 const port = process.env.PORT || 8000;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
