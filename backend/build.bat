@@ -16,4 +16,3 @@ move optimal.exe .\
 move lfu.exe .\
 
 endlocal
-
