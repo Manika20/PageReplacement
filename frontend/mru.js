@@ -8,7 +8,7 @@ document
       .value.split(",")
       .map((page) => parseInt(page.trim()));
 
-    fetch("http://localhost:3000/run-mru", {
+    fetch("https://pagereplacement.onrender.com/run-mru", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

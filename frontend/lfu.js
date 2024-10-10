@@ -9,14 +9,17 @@ document
       .map((page) => parseInt(page.trim()));
     async function fetchData(capacity, pages) {
       try {
-        const response = await fetch("http://localhost:3000/run-lfu", {
-          // Use relative URL
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ capacity, pages }),
-        });
+        const response = await fetch(
+          "https://pagereplacement.onrender.com/run-lfu",
+          {
+            // Use relative URL
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ capacity, pages }),
+          }
+        );
 
         // Check if the response is OK
         if (!response.ok) {
