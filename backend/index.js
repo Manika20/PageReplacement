@@ -3,7 +3,8 @@ import express from "express";
 import path from "path";
 import { execFile } from "child_process";
 import { fileURLToPath } from "url";
-
+const env = require("./config/environment");
+const port = process.env.PORT || 8000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
@@ -178,6 +179,6 @@ app.post("/run-optimal", (req, res) => {
   );
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Server is running on port 3000");
 });
