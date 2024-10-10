@@ -58,7 +58,7 @@ app.post("/run-lru", (req, res) => {
 app.post("/run-fifo", (req, res) => {
   const { capacity, pages } = req.body;
 
-  //console.log("capacity:", capacity, "pages:", pages);
+  console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
     "./fifo",
