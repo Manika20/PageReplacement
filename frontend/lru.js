@@ -1,5 +1,5 @@
 document
-  .getElementById("optimal-form")
+  .getElementById("lru-form")
   .addEventListener("submit", function (event) {
     event.preventDefault();
     const capacity = document.getElementById("capacity").value;
@@ -8,7 +8,7 @@ document
       .value.split(",")
       .map((page) => parseInt(page.trim()));
 
-    fetch("/run-optimal", {
+    fetch("http://localhost:3000/run-lru", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

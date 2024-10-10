@@ -1,5 +1,5 @@
 document
-  .getElementById("fifo-form")
+  .getElementById("mru-form")
   .addEventListener("submit", function (event) {
     event.preventDefault();
     const capacity = document.getElementById("capacity").value;
@@ -8,7 +8,7 @@ document
       .value.split(",")
       .map((page) => parseInt(page.trim()));
 
-    fetch("/run-fifo", {
+    fetch("http://localhost:3000/run-mru", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

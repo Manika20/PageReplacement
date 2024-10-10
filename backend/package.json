@@ -4,5 +4,10 @@
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "firebase": "^10.13.2"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
+
+
 }

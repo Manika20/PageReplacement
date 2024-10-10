@@ -1,20 +1,30 @@
 import cors from "cors";
 import express from "express";
+import path from "path";
 import { execFile } from "child_process";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("frontend"));
+
+app.use(express.static(path.join(__dirname, "../frontend")));
+// Serve the index.html file when the root URL is accessed
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+});
 
 // Handle LRU Algorithm
 app.post("/run-lru", (req, res) => {
   const { capacity, pages } = req.body;
 
-  console.log("capacity:", capacity, "pages:", pages);
+  //console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./api/lru",
+    "./lru",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -44,10 +54,10 @@ app.post("/run-lru", (req, res) => {
 app.post("/run-fifo", (req, res) => {
   const { capacity, pages } = req.body;
 
-  console.log("capacity:", capacity, "pages:", pages);
+  //console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./api/fifo",
+    "./fifo",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -77,10 +87,10 @@ app.post("/run-fifo", (req, res) => {
 app.post("/run-lfu", (req, res) => {
   const { capacity, pages } = req.body;
 
-  console.log("capacity:", capacity, "pages:", pages);
+  //console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./api/lfu",
+    "./lfu",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -108,10 +118,10 @@ app.post("/run-lfu", (req, res) => {
 app.post("/run-mru", (req, res) => {
   const { capacity, pages } = req.body;
 
-  console.log("capacity:", capacity, "pages:", pages);
+  //console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./api/mru",
+    "./mru",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {
@@ -139,10 +149,10 @@ app.post("/run-mru", (req, res) => {
 app.post("/run-optimal", (req, res) => {
   const { capacity, pages } = req.body;
 
-  console.log("capacity:", capacity, "pages:", pages);
+  //console.log("capacity:", capacity, "pages:", pages);
 
   execFile(
-    "./api/optimal",
+    "./optimal",
     [capacity, ...pages.map(String)],
     (error, stdout, stderr) => {
       if (error) {

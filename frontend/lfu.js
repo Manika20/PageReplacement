@@ -9,7 +9,7 @@ document
       .map((page) => parseInt(page.trim()));
     async function fetchData(capacity, pages) {
       try {
-        const response = await fetch("/run-lfu", {
+        const response = await fetch("http://localhost:3000/run-lfu", {
           // Use relative URL
           method: "POST",
           headers: {
