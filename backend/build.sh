@@ -1,28 +1,16 @@
-@echo off
-setlocal
+#!/bin/bash
+set -e  # Exit immediately if a command exits with a non-zero status
 
-REM Compile C++ files
+# Compile C++ files
 g++ -o fifo cpp/fifo.cpp
 g++ -o lru cpp/lru.cpp
 g++ -o mru cpp/mru.cpp
 g++ -o optimal cpp/optimal.cpp
 g++ -o lfu cpp/lfu.cpp
 
-REM Check if the executables exist and move them if they don't
-if not exist fifo.exe (
-    move fifo.exe .\
-)
-if not exist lru.exe (
-    move lru.exe .\
-)
-if not exist mru.exe (
-    move mru.exe .\
-)
-if not exist optimal.exe (
-    move optimal.exe .\
-)
-if not exist lfu.exe (
-    move lfu.exe .\
-)
-
-endlocal
+# Move executables to the backend folder
+mv fifo ./fifo || echo "fifo already exists"
+mv lru ./lru || echo "lru already exists"
+mv mru ./mru || echo "mru already exists"
+mv optimal ./optimal || echo "optimal already exists"
+mv lfu ./lfu || echo "lfu already exists"
